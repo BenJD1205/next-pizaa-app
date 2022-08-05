@@ -6,6 +6,7 @@ import PizzaList from '../components/PizzaList'
 import Add from "../components/Add";
 import AddButton from "../components/AddButton";
 import {useState} from 'react';
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export default function Home({pizzaList,admin}) {
 
@@ -35,7 +36,7 @@ export const getServerSideProps = async (ctx) => {
     admin = true;
   }
 
-  const res = await axios.get("http://localhost:3000/api/products");
+  const res = await axios.get(`${BASE_URL}/api/products`);
   return{
     props:{
       pizzaList:res.data

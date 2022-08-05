@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import {useRouter} from 'next/router';
 import styles from '../styles/Add.module.css';
 import axios from 'axios';
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const Add = ({setClose}) => {
 
@@ -44,7 +45,7 @@ const Add = ({setClose}) => {
                 extraOptions,
                 img:url
             };
-            await axios.post("http://localhost:3000/api/products",newProduct);
+            await axios.post(`${BASE_URL}/api/products`,newProduct);
             setClose(false);
         }catch(err){
             console.log(err);

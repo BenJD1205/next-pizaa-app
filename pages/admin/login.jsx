@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import styles from '../../styles/Login.module.css';
 import { useRouter } from 'next/router';
 import axios from 'axios';
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const Login = () => {
 
@@ -12,7 +13,7 @@ const Login = () => {
 
     const handleClick = async () => {
         try{
-            await axios.post("http://localhost:3000/api/login",{
+            await axios.post(`${BASE_URL}/api/login`,{
                 username,
                 password,
             });
